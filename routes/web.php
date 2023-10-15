@@ -19,4 +19,6 @@ Route::get('/', function () {
 });
 Route::controller(MigrationHistoryController::class)->group(function () {
     Route::get('/migration_history', 'index');
+    Route::get('/migration_history/migrate', 'migrate');
+    Route::get('/migration_history/rollback', 'rollback');
 });

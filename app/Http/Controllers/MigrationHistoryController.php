@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Models\MigrationHistory;
 
@@ -35,6 +36,22 @@ class MigrationHistoryController extends Controller
         ];
 
         var_dump($migrations);
+    }
+
+    /**
+     * マイグレーション実行
+     */
+    public function migrate(){
+        Artisan::call('migrate');
+        return true;
+    }
+
+    /**
+     * ロールバック実行
+     */
+    public function rollback(){
+        Artisan::call('migrate:rollback');
+        return true;
     }
 
     /**
